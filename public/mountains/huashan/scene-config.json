@@ -1,0 +1,68 @@
+{
+  "views": {
+    "hero": {
+      "pos": [
+        -4.8,
+        -5.9,
+        3.35
+      ],
+      "target": [
+        -0.05,
+        -0.05,
+        0.78
+      ],
+      "scale": 5.75
+    },
+    "cable": {
+      "pos": [
+        -1.946513056755066,
+        -2.461256742477417,
+        2.1674141883850098
+      ],
+      "target": [
+        -1.2965130805969238,
+        -0.961256742477417,
+        1.4474140405654907
+      ],
+      "scale": 2.05
+    },
+    "temple": {
+      "pos": [
+        -1.5375443194855987,
+        -2.0972398619538235,
+        2.794843006134033
+      ],
+      "target": [
+        -0.38754431948559875,
+        -0.5972398619538235,
+        1.9448430061340332
+      ],
+      "scale": 1.38
+    }
+  },
+  "stats": {
+    "triangles": 1110132,
+    "trees": 750,
+    "min_cabin_ground_clearance_m": 37.45,
+    "cable_span_m": 1796.6,
+    "cable_heading": "真实西峰索道方向，限岛内段",
+    "vertical_exaggeration": 1.42,
+    "source": "V1 broad terrain plus V2 local summit edits; Copernicus GLO-30; not photogrammetry",
+    "original_v1_preserved": true,
+    "artistic_details": "Micro relief, underside, vegetation and cableway are authored additions."
+  },
+  "route": {
+    "stations": [
+      "瓮峪东沟口下站",
+      "仙峪白雀寺中间站",
+      "西峰巨灵足南侧绝壁洞室上站"
+    ],
+    "shown": "仅岛内段；下站及中间站在小岛范围外",
+    "source": "https://www.sxtaihuaropeway.com/"
+  },
+  "hiking_routes": {
+    "count": 6,
+    "source": "hiking-routes.json",
+    "original_objects_preserved": true
+  }
+}

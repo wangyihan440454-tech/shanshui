@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { generateLandscape } from '../src/landscape/generate';
+const hash=(v:string)=>createHash('sha256').update(v).digest('hex');
+const first=generateLandscape(8361,1800);
+assert.equal(hash(first),hash(generateLandscape(8361,1800)),'Same seed must recreate the exact artwork after resetting noise');
+assert.notEqual(hash(first),hash(generateLandscape(2077,1800)),'Different seeds should create different artwork');
+assert(!/NaN|Infinity/.test(first),'Generated coordinates must remain finite');
+assert(first.includes('<polyline'),'Generator must produce brushwork');
+for(let i=1;i<=6;i++)assert(readFileSync(`public/landscapes/landscape-${i}.webp`).length>1000);
+assert(readFileSync('public/landscapes/fallback.webp').length>1000);
+console.log('PASS: deterministic seeds, distinct landscapes, valid coordinates, six previews and fallback.');

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+upstream/
+.sites-runtime/
+*.tgz
+*.tar.gz
+.qa/
+artwork/
+.tools/
+.assets-source/
+docs/reference-video/
+.reference/

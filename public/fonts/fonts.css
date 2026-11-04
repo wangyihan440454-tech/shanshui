@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Noto Serif SC';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/serif-sc.ttf?v=20261027) format('truetype');
+}
+
+@font-face {
+  font-family: 'Ma Shan Zheng';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/brush-sc.ttf?v=20261027) format('truetype');
+}
+
+

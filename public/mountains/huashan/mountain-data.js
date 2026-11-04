@@ -1,0 +1,31 @@
+import * as THREE from 'three';
+const $=id=>document.getElementById(id);
+export class MountainData {
+ constructor({model,camera,viewer,canvas}){
+  Object.assign(this,{model,camera,viewer,canvas});this.peaks=[];this.elevation=false;this.contours=false;this.weatherVisible=false;this.weather=null;this.last=0;this.uniform={value:0};this.step={value:100};this.ray=new THREE.Raycaster();this.markers=[];
+  this.terrain=null;model.traverse(o=>{if(o.isMesh&&o.name.startsWith('华山群峰'))this.terrain=o;});
+  if(this.terrain)for(const material of [].concat(this.terrain.material)){
+   material.onBeforeCompile=s=>{s.uniforms.uGeoContours=this.uniform;s.uniforms.uGeoStep=this.step;s.vertexShader='varying float vGeoHeight;\n'+s.vertexShader;s.vertexShader=s.vertexShader.replace('#include <project_vertex>','#include <project_vertex>\nvGeoHeight=(modelMatrix*vec4(transformed,1.0)).y;');s.fragmentShader='varying float vGeoHeight;\nuniform float uGeoContours;\nuniform float uGeoStep;\n'+s.fragmentShader;s.fragmentShader=s.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
+     if(uGeoContours>0.5){
+      float elevationM=(((vGeoHeight-0.12)/1.42)+0.72)*1000.0;
+      float h=elevationM/uGeoStep;
+      float band=abs(fract(h+0.5)-0.5);
+      float aa=max(fwidth(h),0.0001);
+      float line=1.0-smoothstep(aa*0.65,aa*1.6,band);
+      diffuseColor.rgb=mix(diffuseColor.rgb,vec3(0.11,0.22,0.18),line*0.86);
+     }`);};material.customProgramCacheKey=()=> 'huashan-contours-v1';material.needsUpdate=true;
+  }
+  for(const [id,field] of [['elevation','elevation'],['contours','contours'],['weather','weatherVisible']])$(id).addEventListener('click',()=>{this[field]=!this[field];$(id).setAttribute('aria-pressed',String(this[field]));this.sync();if(id==='weather'&&this[field])this.fetchWeather();});
+  $('contour-step').addEventListener('change',e=>{this.step.value=Number(e.target.value);$('contour-readout').textContent=this.step.value+' 米间隔 · 模型估算';});
+  $('weather-retry').addEventListener('click',()=>this.fetchWeather());$('weather-close').addEventListener('click',()=>{$('weather').click();$('weather').focus();});
+  fetch('./peaks.json').then(r=>{if(!r.ok)throw Error('peaks');return r.json();}).then(peaks=>{this.peaks=peaks;for(const p of peaks){const mark=document.createElement('div');mark.className='peak-marker';mark.innerHTML='<b></b><span></span>';mark.querySelector('b').textContent=p.name;mark.querySelector('span').textContent=p.reference_elevation.toLocaleString('zh-CN')+' m';mark.hidden=true;$('peak-labels').append(mark);this.markers.push({p,mark});}this.sync();}).catch(()=>{$('elevation-note').textContent='海拔资料暂时无法载入';});
+  this.pointerStart=null;canvas.addEventListener('pointerdown',e=>{this.pointerStart=[e.clientX,e.clientY];});canvas.addEventListener('pointerup',e=>{if(!this.elevation||!this.terrain||!this.pointerStart||Math.hypot(e.clientX-this.pointerStart[0],e.clientY-this.pointerStart[1])>5)return;const r=canvas.getBoundingClientRect();this.ray.setFromCamera(new THREE.Vector2((e.clientX-r.left)/r.width*2-1,1-(e.clientY-r.top)/r.height*2),camera);const hit=this.ray.intersectObject(this.terrain,false)[0];if(!hit)return;const h=(((hit.point.y-.12)/1.42)+.72)*1000;$('elevation-pick').textContent='所选山体 ≈ '+Math.round(h).toLocaleString('zh-CN')+' m（模型估算）';});
+  this.timer=setInterval(()=>{if(this.weatherVisible)this.fetchWeather();},600000);this.sync();
+ }
+ sync(){this.uniform.value=this.contours?1:0;$('elevation-note').hidden=!this.elevation;$('contour-settings').hidden=!this.contours;$('weather-panel').hidden=!this.weatherVisible;for(const {mark} of this.markers)mark.hidden=!this.elevation;if(this.weather)this.renderWeather();}
+ async fetchWeather(){if(this.fetching)return;this.fetching=true;$('weather-status').textContent='正在更新…';try{const r=await fetch('/api/weather',{signal:AbortSignal.timeout(18000)});if(!r.ok)throw Error('weather');const w=await r.json();if(!Number.isFinite(w.temperature_c)||!Number.isFinite(w.elevation_m))throw Error('weather');this.weather=w;this.renderWeather();}catch(e){if(this.weather){this.weather.stale=true;this.renderWeather();}else{$('weather-status').textContent='天气暂时无法获取，请连接网络后重试';$('weather-nearby').textContent='—';$('peak-temperatures').replaceChildren();}}finally{this.fetching=false;}}
+ renderWeather(){const w=this.weather,temperature=n=>(n>0?'+':'')+n.toFixed(1)+'°C';$('weather-nearby').textContent=temperature(w.temperature_c);$('weather-location').textContent='景区附近 · 气象网格海拔 '+Math.round(w.elevation_m)+' m';$('weather-status').textContent=(w.stale?'暂未更新 · 上次数据 ':'更新 ')+new Date(w.observed_at).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false});const list=$('peak-temperatures');list.replaceChildren();for(const p of this.peaks){const row=document.createElement('div');row.className='peak-weather-row';const a=document.createElement('span');a.textContent=p.name+' · '+p.reference_elevation.toLocaleString('zh-CN')+' m';const b=document.createElement('strong');b.textContent='≈ '+temperature(w.temperature_c-.0065*(p.reference_elevation-w.elevation_m));row.append(a,b);list.append(row);}}
+ update(t){if(!this.elevation||t-this.last<.08)return;this.last=t;const width=this.viewer.clientWidth,height=this.viewer.clientHeight;let used=[];for(const {p,mark} of this.markers){const v=new THREE.Vector3(p.px,p.pz+.045,-p.py).project(this.camera);if(v.z>1||v.z< -1||Math.abs(v.x)>1.05||Math.abs(v.y)>1.05){mark.hidden=true;continue;}let x=(v.x*.5+.5)*width,y=(-v.y*.5+.5)*height;const baseY=y;for(let i=0;i<10&&used.some(q=>Math.abs(q.x-x)<104&&Math.abs(q.y-y)<42);i++)y-=43;used.push({x,y});mark.hidden=false;mark.style.left=Math.max(55,Math.min(width-78,x))+'px';mark.style.top=Math.max(135,Math.min(height-170,y))+'px';mark.style.setProperty('--leader',Math.max(8,baseY-y)+'px');}}
+ get state(){return {elevation:this.elevation,contours:this.contours,interval:this.step.value,weatherVisible:this.weatherVisible,weather:this.weather,terrainFound:!!this.terrain};}
+ dispose(){clearInterval(this.timer);}
+}

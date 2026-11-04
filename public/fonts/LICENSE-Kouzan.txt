@@ -1,0 +1,18 @@
+Kouzan Gyousho / 衡山毛筆フォント行書
+
+Calligraphy and original font: Aoyagi Kouzan / 青柳衡山.
+Official distributor: Musashi System / 武蔵システム.
+Source and usage terms: https://opentype.jp/kouzangyousho.htm
+Original download: https://opentype.jp/bin/KouzanGyousho.zip
+Accessed: 2026-10-21.
+
+The official page permits free use, unrestricted commercial use, logos,
+and inclusion in magazines, books and CDs. The font is provided without warranty.
+
+This website contains a lightweight web subset, internally renamed
+ShanshuiKouzanTitle. Unsupported simplified title code points are mapped to
+the corresponding existing traditional glyphs; no brush outlines are synthesized.
+Legacy gasp/mort tables are omitted for modern browser compatibility.
+Original copyright metadata is retained in the font.
+
+For unsupported or empty glyphs in the original Kouzan font, the site uses the separately licensed bundled Ma Shan Zheng brush font as fallback. Empty CJK mappings are removed in the web subset, preserving complete new artwork names.

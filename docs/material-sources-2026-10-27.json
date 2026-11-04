@@ -1,0 +1,353 @@
+[
+  {
+    "id": "yangjin-grazing",
+    "title": "仿古山水十二开 · 牧牛一开",
+    "author": "杨晋",
+    "source": "中艺画城",
+    "url": "https://www.guohuafuzhi.com/photos-view-id-492.page",
+    "image": "/materials/yanjin-grazing.webp",
+    "description": "柳岸浅渚，牧童骑牛穿行其间。",
+    "acquisition": "公开单页预览；仅收录已匹配的牧牛这一开。",
+    "sourceImageUrl": "https://www.guohuafuzhi.com/data/0000/12/13530751496705.jpg?r1000x1060",
+    "verified": true,
+    "verification": "原页题为125-杨晋-仿古山水十二开-1，实图可见牧童与牛。",
+    "rights": "公开预览，原站未提供开放再利用许可声明。",
+    "width": 387,
+    "height": 471,
+    "images": [
+      {
+        "src": "/materials/yanjin-grazing.webp",
+        "caption": "牧牛这一开"
+      }
+    ]
+  },
+  {
+    "id": "xiezhiliu-lotus",
+    "title": "荷花图轴",
+    "author": "谢稚柳",
+    "source": "三典轩书画图库",
+    "url": "https://www.sdxco.cn/zt/20168/201685872.html",
+    "image": "/materials/xiezhiliu-lotus.webp",
+    "description": "墨荷层叠，白花与莲蓬相映。",
+    "acquisition": "完整公开预览；高清原图下载为会员服务。",
+    "sourceImageUrl": "https://pic.3zitie.cn/images/proupfile/2016/201682/img/2016080222353667666.jpg",
+    "verified": true,
+    "verification": "页面题名与公开zsimg相符，预览完整竖幅。",
+    "rights": "公开预览，现代画作；未声称CC0或商用许可。",
+    "width": 958,
+    "height": 1600,
+    "images": [
+      {
+        "src": "/materials/xiezhiliu-lotus.webp",
+        "caption": "完整画面"
+      }
+    ]
+  },
+  {
+    "id": "zhangdaqian-begonia",
+    "title": "叠石海棠图轴",
+    "author": "张大千",
+    "source": "木直艺术中心",
+    "url": "https://muzhiart.com/cms/show-2065.html",
+    "image": "/materials/zhangdaqian-begonia.webp",
+    "description": "奇石叠起，海棠点染春色。",
+    "acquisition": "公开完整竖轴预览；原页面另有4720×16592原图下载入口。",
+    "sourceImageUrl": "https://muzhiart.com/public/uploads/images/20220412/1_2022041208250590f3e.jpeg",
+    "verified": true,
+    "verification": "采用原页data-original完整竖轴268×942，而不是src局部479×320缩略图。",
+    "originalDownloadUrl": "https://www.shutu.tv/school/15/gcsh/resource/666/175830/download?type=1&id=550706",
+    "rights": "公开预览，现代画作；未声称CC0或商用许可。",
+    "width": 268,
+    "height": 942,
+    "images": [
+      {
+        "src": "/materials/zhangdaqian-begonia.webp",
+        "caption": "完整画面"
+      }
+    ]
+  },
+  {
+    "id": "qiuying-landscape",
+    "title": "山水图",
+    "author": "传仇英",
+    "source": "中华珍宝馆 · 台北故宫藏",
+    "url": "https://g2.ltfc.net/view/SUHA/65535dd35cb91f3822af24d8",
+    "image": "/materials/qiuying-landscape.webp",
+    "description": "青绿山水长卷，传款仇英；馆方研究列为16—18世纪苏州片。",
+    "acquisition": "局部预览已收录，完整长卷可在来源高清浏览。",
+    "sourceImageUrl": "https://artical-cdn.quanku.art/thumbstore/64a13f1d1352a0640f1dba88/1h6dflqed_thumb.jpeg",
+    "verified": true,
+    "images": [
+      {
+        "src": "/materials/qiuying-landscape.webp",
+        "caption": "局部预览，完整长卷见来源"
+      }
+    ],
+    "officialUrl": "https://digitalarchive.npm.gov.tw/opendata/Pub/Detail/5560?dep=P&mode=full",
+    "notes": "中华珍宝馆页面原文明确非仇英亲笔；故宫官方文物编号故畫001596，参考书目《偽好物-16~18世紀蘇州片及其影響》pp250-255。此卡片缩略图是裁切预览，不能标成完整原图。",
+    "rights": "第三方公开预览，未据此声明开放授权。"
+  },
+  {
+    "id": "shenzhou-album",
+    "title": "山水册 · 当前册页",
+    "author": "沈周",
+    "source": "小笑话网 · 古代国画资料",
+    "url": "https://rqxh.net/article/view.aspx?id=20722",
+    "image": "/materials/shenzhou-album.webp",
+    "description": "疏林山石与扁舟相映，保留当前册页完整画面。",
+    "acquisition": "公开当前册页预览；来源页面另提供JPG、TIF网盘入口。",
+    "sourceImageUrl": "https://vip.123pan.cn/1815741533/guohuapic/明朝/沈周/明_沈周_山水册(纸本).jpg",
+    "verified": true,
+    "verification": "页面题名为明_沈周_山水册(纸本)，直接公开预览以正常页面Referer请求取得4086×3448，当前单页未推断其他页。",
+    "downloads": [
+      {
+        "label": "JPG网盘入口",
+        "url": "http://d.rqxh.net/f/3782264-670471485-20ccce"
+      },
+      {
+        "label": "TIF网盘入口",
+        "url": "http://d.rqxh.net/f/3782264-670527218-b94b49"
+      }
+    ],
+    "rights": "公开预览，原站未提供开放再利用许可声明。",
+    "width": 1600,
+    "height": 1350,
+    "images": [
+      {
+        "src": "/materials/shenzhou-album.webp",
+        "caption": "当前册页"
+      }
+    ]
+  },
+  {
+    "id": "wangjian-album",
+    "title": "山水十二册逸品册",
+    "author": "王鉴",
+    "source": "中华珍宝馆",
+    "url": "https://g2.ltfc.net/view/SUHA/608a61abaa7c385c8d943f10",
+    "image": "/materials/wangjian-album-02.webp",
+    "description": "清代王鉴山水册，十二开与封面按原次序收入一册。",
+    "acquisition": "已收录13页公开预览（含封面），来源可高清浏览。",
+    "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5d8779bd4aea654b0b3b3c1d/15/0_0.jpg",
+    "verified": true,
+    "images": [
+      {
+        "src": "/materials/wangjian-album.webp",
+        "caption": "封面",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5d8779bd4aea654b0b3b3c1c/15/0_0.jpg",
+        "width": 375,
+        "height": 433
+      },
+      {
+        "src": "/materials/wangjian-album-02.webp",
+        "caption": "第1开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5d8779bd4aea654b0b3b3c1d/15/0_0.jpg",
+        "width": 375,
+        "height": 428
+      },
+      {
+        "src": "/materials/wangjian-album-03.webp",
+        "caption": "第2开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5d8779bd4aea654b0b3b3c21/15/0_0.jpg",
+        "width": 375,
+        "height": 429
+      },
+      {
+        "src": "/materials/wangjian-album-04.webp",
+        "caption": "第3开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5d8779bd4aea654b0b3b3c22/15/0_0.jpg",
+        "width": 375,
+        "height": 429
+      },
+      {
+        "src": "/materials/wangjian-album-05.webp",
+        "caption": "第4开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5d8779bd4aea654b0b3b3c23/15/0_0.jpg",
+        "width": 375,
+        "height": 429
+      },
+      {
+        "src": "/materials/wangjian-album-06.webp",
+        "caption": "第5开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5d8779bd4aea654b0b3b3c24/15/0_0.jpg",
+        "width": 375,
+        "height": 430
+      },
+      {
+        "src": "/materials/wangjian-album-07.webp",
+        "caption": "第6开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5d8779bd4aea654b0b3b3c25/15/0_0.jpg",
+        "width": 375,
+        "height": 429
+      },
+      {
+        "src": "/materials/wangjian-album-08.webp",
+        "caption": "第7开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5d8779bd4aea654b0b3b3c26/15/0_0.jpg",
+        "width": 375,
+        "height": 430
+      },
+      {
+        "src": "/materials/wangjian-album-09.webp",
+        "caption": "第8开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5d8779bd4aea654b0b3b3c27/15/0_0.jpg",
+        "width": 375,
+        "height": 430
+      },
+      {
+        "src": "/materials/wangjian-album-10.webp",
+        "caption": "第9开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5d8779bd4aea654b0b3b3c28/15/0_0.jpg",
+        "width": 375,
+        "height": 430
+      },
+      {
+        "src": "/materials/wangjian-album-11.webp",
+        "caption": "第10开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5d8779bd4aea654b0b3b3c1e/15/0_0.jpg",
+        "width": 375,
+        "height": 430
+      },
+      {
+        "src": "/materials/wangjian-album-12.webp",
+        "caption": "第11开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5d8779bd4aea654b0b3b3c1f/15/0_0.jpg",
+        "width": 375,
+        "height": 430
+      },
+      {
+        "src": "/materials/wangjian-album-13.webp",
+        "caption": "第12开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5d8779bd4aea654b0b3b3c20/15/0_0.jpg",
+        "width": 500,
+        "height": 281
+      }
+    ],
+    "notes": "页面 hdpIds 和 hdps 数组13项；第1页是封面，第2至13页是十二开。封面图在images第一项，卡片选第一幅山水。缩略图375×428左右，末页500×281；未声称本地图片高清。",
+    "rights": "第三方公开预览，未据此声明开放授权。"
+  },
+  {
+    "id": "dongqichang-six",
+    "title": "仿古山水",
+    "author": "董其昌",
+    "source": "中华珍宝馆 · 纳尔逊—阿特金斯艺术博物馆藏",
+    "url": "https://g2.ltfc.net/view/SUHA/60898725c3e4f0508bcae626",
+    "image": "/materials/dongqichang-six.webp",
+    "description": "明代董其昌仿古山水六开，同册收录，依原顺序翻看。",
+    "acquisition": "六开公开预览已收录，来源可高清浏览。",
+    "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5be397098ed7f411e26a5462/14/0_0.jpg",
+    "verified": true,
+    "images": [
+      {
+        "src": "/materials/dongqichang-six.webp",
+        "caption": "第1开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5be397098ed7f411e26a5462/14/0_0.jpg",
+        "width": 225,
+        "height": 363
+      },
+      {
+        "src": "/materials/dongqichang-six-02.webp",
+        "caption": "第2开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5be397098ed7f411e26a5463/14/0_0.jpg",
+        "width": 223,
+        "height": 362
+      },
+      {
+        "src": "/materials/dongqichang-six-03.webp",
+        "caption": "第3开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5be397098ed7f411e26a5464/14/0_0.jpg",
+        "width": 232,
+        "height": 362
+      },
+      {
+        "src": "/materials/dongqichang-six-04.webp",
+        "caption": "第4开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5be397098ed7f411e26a5465/14/0_0.jpg",
+        "width": 230,
+        "height": 361
+      },
+      {
+        "src": "/materials/dongqichang-six-05.webp",
+        "caption": "第5开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5be397098ed7f411e26a5466/14/0_0.jpg",
+        "width": 226,
+        "height": 363
+      },
+      {
+        "src": "/materials/dongqichang-six-06.webp",
+        "caption": "第6开",
+        "sourceImageUrl": "https://cag-tiles.oss-cn-beijing.aliyuncs.com/cagstore/5be397098ed7f411e26a5468/14/0_0.jpg",
+        "width": 231,
+        "height": 363
+      }
+    ],
+    "notes": "页面 hdpIds、hdps 均6项，馆藏 owner 为纳尔逊-阿特金斯艺术博物馆。原图纸本设色，尺寸56.2×36.2cm；本地公开缩略图约225×363。",
+    "rights": "第三方公开预览，未据此声明开放授权。"
+  },
+  {
+    "id": "dongqichang-seven",
+    "title": "山水册 · 七张资源",
+    "author": "董其昌",
+    "source": "三典轩书画图库",
+    "url": "https://www.sdxco.cn/zt/201611/2016117250.html",
+    "image": "/materials/dongqichang-seven.webp",
+    "description": "淡设色写远山近树，题跋与画面相映。",
+    "acquisition": "当前公开预览1张；七张高清原图需到来源页办理会员下载。",
+    "sourceImageUrl": "https://pic.3zitie.cn/images/proupfile/2018/201843/img/201804031124441086.jpg",
+    "verified": true,
+    "verification": "原页面、手机版、pro_img公开页均只实际嵌入此张同册预览。未发现其余6张公开URL，泛用JS中的inputpimg引用没有对应DOM，不猜测图号、不调用会员下载接口。",
+    "availablePages": 1,
+    "totalPages": 7,
+    "rights": "公开预览，未取得七张原图或声称完整册页可站内浏览。",
+    "width": 1200,
+    "height": 1298,
+    "images": [
+      {
+        "src": "/materials/dongqichang-seven.webp",
+        "caption": "同册公开预览"
+      }
+    ]
+  },
+  {
+    "id": "lanying-landscape",
+    "title": "山水图",
+    "author": "蓝瑛",
+    "source": "国立故宫博物院，台北 · CC0",
+    "url": "https://digitalarchive.npm.gov.tw/opendata/Pub/Detail/14791?dep=P&mode=full",
+    "image": "/materials/lanying-landscape.webp",
+    "description": "己亥秋仲作，1659年；绢本山水轴，题于西溪文山庄。",
+    "acquisition": "官方公开预览已收录，来源提供开放图档。",
+    "sourceImageUrl": "https://digitalarchive.npm.gov.tw/opendata/Image/GetImage?imageId=1075357&randomCode=1029941652",
+    "verified": true,
+    "images": [
+      {
+        "src": "/materials/lanying-landscape.webp",
+        "caption": "全轴预览"
+      }
+    ],
+    "notes": "官方品名“明藍瑛畫山水 軸”，创作时间“清世祖順治十六年（1659）”，款识“己亥（1659）秋仲。畫於西溪之焉文山莊。西湖外史藍瑛。”低阶图像CC0，中阶CC BY4.0。本站所取页面公开低阶预览297×600。",
+    "rights": "低阶公开图像CC0；保留馆名。"
+  },
+  {
+    "id": "taocheng-landscape",
+    "title": "山水图页",
+    "author": "传陶成",
+    "source": "史密森尼国立亚洲艺术博物馆 · CC0",
+    "url": "https://asia-archive.si.edu/object/F1915.36f/",
+    "image": "/materials/taocheng-landscape.webp",
+    "description": "纸本设色山水册页，传统归于陶成，馆方定为17世纪。",
+    "acquisition": "官方开放图像已收录，可至来源下载原图。",
+    "sourceImageUrl": "https://ids.si.edu/ids/deliveryService?id=FS-8257_06",
+    "verified": true,
+    "images": [
+      {
+        "src": "/materials/taocheng-landscape.webp",
+        "caption": "山水图页 · F1915.36f"
+      }
+    ],
+    "officialUrl": "https://asia.si.edu/explore-art-culture/collections/search/edanmdm%3Afsg_F1915.36f/",
+    "downloadUrl": "https://ids.si.edu/ids/download/id/FS-8257_06",
+    "notes": "史密森尼官方记录：Traditionally attributed to Tao Cheng (late 15th-early16th century)，作品 Period17th century，Restrictions and Rights CC0。原 download 端点返回Request Rejected，改用同馆藏页面实际指定的 deliveryService 图片，4000×3746，本站缩至1600长边。",
+    "rights": "CC0 1.0 / public domain；馆方明确允许复制、修改和分发。"
+  }
+]

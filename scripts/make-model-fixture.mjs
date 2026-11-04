@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+const positions=new Float32Array([-1,0,-1,1,0,-1,1,0,1,-1,0,1,0,1.6,0]);
+const indices=new Uint16Array([0,4,1,1,4,2,2,4,3,3,4,0,0,1,2,0,2,3]);
+const binary=Buffer.concat([Buffer.from(positions.buffer),Buffer.from(indices.buffer)]);
+const json={asset:{version:'2.0'},scene:0,scenes:[{nodes:[0]}],nodes:[{mesh:0}],meshes:[{primitives:[{attributes:{POSITION:0},indices:1}]}],buffers:[{byteLength:binary.length}],bufferViews:[{buffer:0,byteOffset:0,byteLength:positions.byteLength,target:34962},{buffer:0,byteOffset:positions.byteLength,byteLength:indices.byteLength,target:34963}],accessors:[{bufferView:0,componentType:5126,count:5,type:'VEC3',min:[-1,0,-1],max:[1,1.6,1]},{bufferView:1,componentType:5123,count:18,type:'SCALAR'}]};
+const text=Buffer.from(JSON.stringify(json));const j=Buffer.concat([text,Buffer.alloc((4-text.length%4)%4,32)]);const b=Buffer.concat([binary,Buffer.alloc((4-binary.length%4)%4)]);
+const header=Buffer.alloc(12);header.writeUInt32LE(0x46546c67);header.writeUInt32LE(2,4);header.writeUInt32LE(12+8+j.length+8+b.length,8);
+const chunk=(data,type)=>{const h=Buffer.alloc(8);h.writeUInt32LE(data.length);h.writeUInt32LE(type,4);return Buffer.concat([h,data]);};
+fs.mkdirSync('.qa',{recursive:true});fs.writeFileSync('.qa/model-test.glb',Buffer.concat([header,chunk(j,0x4e4f534a),chunk(b,0x004e4942)]));
+console.log('Created local GLB fixture for import verification.');
