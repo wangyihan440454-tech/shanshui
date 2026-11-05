@@ -201,7 +201,7 @@ scene.background = new THREE.Color(0xF0F3F5);
 scene.fog = new THREE.FogExp2(0xF0F3F5, 0.0012);
 
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 3000);
-camera.position.set(0, 0, 420);
+camera.position.set(0, 0, 450);
 
 scene.add(new THREE.AmbientLight(0xffffff, 0.9));
 const keyLight = new THREE.DirectionalLight(0xffffff, 0.6);
@@ -546,7 +546,7 @@ function animate() {
         _camTarget.set(idleX * 0.2, -20 + idleY * 0.2, 320);
         _lookTarget.set(0, 20, 0);
     } else {
-        _camTarget.set(idleX, idleY, 420);
+        _camTarget.set(idleX, idleY, 450);
         _lookTarget.set(0, 0, 0);
     }
 
