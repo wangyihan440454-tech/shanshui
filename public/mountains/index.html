@@ -360,6 +360,12 @@ async function buildMap() {
         provinceMeshes.push(mesh);
     });
 
+    const bounds = new THREE.Box3().setFromObject(mapGroup);
+    const halfWidth = Math.max(-bounds.min.x, bounds.max.x);
+    const halfHeight = Math.max(-bounds.min.y, bounds.max.y);
+    const halfViewHeight = (camera.position.z - bounds.max.z) * Math.tan(THREE.MathUtils.degToRad(22.5));
+    overviewZoom = Math.min(3, 0.97 * halfViewHeight * camera.aspect / halfWidth, 0.82 * halfViewHeight / halfHeight);
+    setMapZoom(overviewZoom);
     mapReady = true;
     loaderEl.classList.add('hide');
     setTimeout(() => loaderEl.remove(), 800);
@@ -487,6 +493,7 @@ function resetView() {
     document.getElementById('info-card').classList.remove('show');
 }
 
+let overviewZoom = 1;
 let mapZoom = 1;
 function setMapZoom(value) {
     mapZoom = Math.min(3, Math.max(0.65, value));
@@ -504,7 +511,7 @@ window.addEventListener('keydown', (event) => {
     if (event.ctrlKey || event.metaKey || event.altKey) return;
     if (event.key === '+' || event.key === '=') { event.preventDefault(); setMapZoom(mapZoom * 1.15); }
     if (event.key === '-' || event.key === '_') { event.preventDefault(); setMapZoom(mapZoom / 1.15); }
-    if (event.key === '0') setMapZoom(1);
+    if (event.key === '0') setMapZoom(overviewZoom);
 });
 
 renderer.domElement.addEventListener('click', handleClick);
