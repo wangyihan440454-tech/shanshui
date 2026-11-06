@@ -6,35 +6,35 @@
 </style>
 <header><a href="../?view=hero">← 返回华山三维山境</a><h1>华山山地温度测量研究台</h1><p>比较海拔与日照条件对山地气温估算的影响，并用实测记录检验海拔模型。这里明确标注气象数据、模拟预测与现场测量的区别。</p></header>
 <main><div class="grid">
-<section class="panel"><h2>01 · 气象参考值</h2><p class="hint">Open-Meteo：华山区域气象网格 2 米气温，不是华山峰顶传感器实测。</p><div id="ref-temp" class="value">—</div><p id="ref-time" class="hint">正在请求气象数据</p><p id="ref-alt" class="hint"></p><p id="ref-sun" class="hint">正在读取日照条件</p><button id="refresh">更新气象数据</button><p id="ref-status" role="status" class="hint"></p></section>
-<section class="panel"><h2>02 · 海拔与日照实验</h2><p class="hint">改变目标海拔与受光程度，观察同一气象基准下的情景差异。0.65°C / 100m 是海拔基线，日照响应系数仅作演示，尚未由华山测点校准。</p><label for="rate">海拔递减率 γ：<b id="rate-label">0.65</b> °C / 100m</label><input id="rate" type="range" min="-0.2" max="1.4" step="0.05" value="0.65"><label for="target">目标海拔：<input id="target" type="number" min="0" max="3500" value="1800"> m</label><div class="sun-control"><label for="exposure">局部受光程度：<b id="exposure-label">50%</b></label><input id="exposure" type="range" min="0" max="100" step="5" value="50"><span class="hint">0% 背阴 · 50% 中性参照 · 100% 向阳</span><label for="sun-beta">日照响应系数：<b id="sun-beta-label">1.0</b> °C / 500 W/m²</label><input id="sun-beta" type="range" min="0" max="3" step="0.1" value="1"><p class="scenario">日照修正只用于比较情景，不是峰顶实测值；气象接口无辐射数据时不计算修正。</p></div><div id="predicted" class="value">—</div><div class="breakdown"><div>海拔变化 <strong id="alt-delta">—</strong></div><div>日照情景修正 <strong id="sun-delta">—</strong></div></div><p class="hint">模型：T ≈ T₀ − γ × (h−h₀)/100 + β × (R/500) × (受光比例−0.5) × 2。R 为气象网格短波辐射，局部受光比例由你设定。</p></section>
-<section class="panel wide"><h2>03 · 华山五峰温度估算</h2><p class="hint">五峰海拔来自仓库已有 peaks.json；以下数字为只考虑海拔的基线估算；坡向、遮阴和局部日照因峰而异，不能统一套用右侧的日照修正。</p><div id="peaks" class="peaks">载入资料中…</div></section>
+<section class="panel"><h2>01 · 气象参考值</h2><p class="hint">有实时数据时使用 Open-Meteo 的华山区域气象网格 2 米气温；若接口不可用则显示演示基准。两者都不是峰顶实测。</p><div id="ref-temp" class="value">15.00 °C</div><p id="ref-time" class="hint">演示基准：15°C，参考海拔 1000m；正在尝试获取实时气象数据</p><p id="ref-alt" class="hint">演示参考海拔 1000 m</p><p id="ref-sun" class="hint">下方日照实验使用可调的情景辐射值</p><button id="refresh">更新气象数据</button><p id="ref-status" role="status" class="hint"></p></section>
+<section class="panel"><h2>02 · 海拔与日照实验</h2><p class="hint">改变目标海拔与受光程度，观察同一气象基准下的情景差异。0.65°C / 100m 是海拔基线，日照响应系数仅作演示，尚未由华山测点校准。</p><label for="rate">海拔递减率 γ：<b id="rate-label">0.65</b> °C / 100m</label><input id="rate" type="range" min="-0.2" max="1.4" step="0.05" value="0.65"><label for="target">目标海拔：<input id="target" type="number" min="0" max="3500" value="1800"> m</label><div class="sun-control"><label for="exposure">局部受光程度：<b id="exposure-label">75%</b></label><input id="exposure" type="range" min="0" max="100" step="5" value="75"><span class="hint">0% 背阴 · 50% 中性参照 · 100% 向阳</span><label for="sun-beta">日照响应系数：<b id="sun-beta-label">1.0</b> °C / 500 W/m²</label><input id="sun-beta" type="range" min="0" max="3" step="0.1" value="1"><label for="scenario-radiation">情景短波辐射：<input id="scenario-radiation" type="number" min="0" max="1200" step="25" value="500"> W/m²</label><p class="scenario">受光程度、辐射和响应系数是可调情景参数，始终参与计算；不是峰顶实测值。</p></div><div id="predicted" class="value">—</div><div class="breakdown"><div>海拔变化 <strong id="alt-delta">—</strong></div><div>日照情景修正 <strong id="sun-delta">—</strong></div></div><p class="hint">模型：T ≈ T₀ − γ × (h−h₀)/100 + β × (R/500) × (受光比例−0.5) × 2。R 为下方可调的情景短波辐射，局部受光比例由你设定。</p></section>
+<section class="panel wide"><h2>03 · 华山五峰温度估算</h2><p class="hint">五峰海拔来自仓库已有 peaks.json；以下数字按实验区所选的同一受光情景计算，可随滑块变化；各峰真实坡向与遮阴不同，不能把这些数值当作实测。</p><div id="peaks" class="peaks">载入资料中…</div></section>
 <section class="panel"><h2>04 · 导入真实测温记录</h2><p class="hint">每行3列：测点名, 海拔米, 2米气温℃。同批测点应尽量同时间测量，并记录设备、地理坐标与天气。至少4个测点、3个不同海拔。</p><textarea id="csv" placeholder="name,elevation_m,temp_c&#10;A,1200,17.8&#10;B,1500,16.2"></textarea><div class="row"><button id="fit">验证实测数据</button><button id="clear">清空</button></div><p id="validation-status" role="status" class="hint">尚无实测数据，不能声称模型精度。</p></section>
 <section class="panel wide" id="results" hidden><h2>05 · 结果与交叉验证</h2><div class="row"><div class="metric">实测拟合递减率 <strong id="fitted">—</strong></div><div class="metric">留一验证 MAE <strong id="mae">—</strong></div><div class="metric">留一验证 RMSE <strong id="rmse">—</strong></div></div><p class="hint">每轮用其它测点拟合线性回归，再预测被留出的测点。指标只描述所导入样本，不等于山体所有位置精度。</p><div class="scroll"><table><thead><tr><th>测点</th><th>海拔 (m)</th><th>实测 (°C)</th><th>预测 (°C)</th><th>误差 (°C)</th></tr></thead><tbody id="rows"></tbody></table></div><div class="row"><button id="export">导出验证结果 JSON</button></div></section>
 <section class="panel wide"><h2>研究说明</h2><div class="note">这是科研原型，不是已经完成的山地测温科研成果。海拔与日照情景估算依赖简化模型，日照响应系数尚未校准，不能替代现场实测。要形成挑战杯创新点，应收集真实山地测温记录，再与固定温度梯度、实测拟合及考虑坡向/日照的多变量方法进行对照测试。</div></section></div><footer>数据：Open-Meteo API / 项目内五峰参考海拔。该原型不用于登山安全决策。</footer></main>
 <script>
 const $=id=>document.getElementById(id);
 let weather=null,peaks=[],validation=null;
+const demoWeather={temperature_c:15,elevation_m:1000};
 const temp=n=>Number.isFinite(n)?n.toFixed(2)+' °C':'—';
 const estimate=(t,h,alt,r)=>t-r*(alt-h)/100;
 function update(){
 const rate=+$('rate').value,rawAlt=$('target').value,alt=Number(rawAlt),exposure=+$('exposure').value/100,beta=+$('sun-beta').value;
+const rawR=$('scenario-radiation').value,radiation=Number(rawR),validRadiation=rawR!==''&&Number.isFinite(radiation)&&radiation>=0&&radiation<=1200;
 $('rate-label').textContent=rate.toFixed(2);$('exposure-label').textContent=Math.round(exposure*100)+'%';$('sun-beta-label').textContent=beta.toFixed(1);
-const validAlt=rawAlt!==''&&Number.isFinite(alt)&&alt>=0&&alt<=3500;
-const radiation=weather?.shortwave_radiation_wm2;
-const solarKnown=Number.isFinite(radiation);
-const altitudeDelta=weather&&validAlt?-rate*(alt-weather.elevation_m)/100:null;
-const sunDelta=weather&&validAlt&&solarKnown?beta*(radiation/500)*(exposure-0.5)*2:null;
+const reference=weather??demoWeather,validAlt=rawAlt!==''&&Number.isFinite(alt)&&alt>=0&&alt<=3500;
+const altitudeDelta=validAlt?-rate*(alt-reference.elevation_m)/100:null;
+const sunDelta=validRadiation?beta*(radiation/500)*(exposure-0.5)*2:null;
 $('alt-delta').textContent=altitudeDelta===null?'—':(altitudeDelta>=0?'+':'')+temp(altitudeDelta);
 $('sun-delta').textContent=sunDelta===null?'—':(sunDelta>=0?'+':'')+temp(sunDelta);
-$('predicted').textContent=altitudeDelta===null?'—':temp(weather.temperature_c+altitudeDelta+(sunDelta??0));
+$('predicted').textContent=altitudeDelta===null||sunDelta===null?'—':temp(reference.temperature_c+altitudeDelta+sunDelta);
 const box=$('peaks');box.replaceChildren();
-for(const p of peaks){const div=document.createElement('div');div.className='peak';const a=document.createElement('span');a.textContent=p.name+' · '+p.reference_elevation+'m';const b=document.createElement('strong');b.textContent=weather?'≈ '+temp(estimate(weather.temperature_c,weather.elevation_m,p.reference_elevation,rate)):'—';div.append(a,b);box.append(div)}
+for(const p of peaks){const div=document.createElement('div');div.className='peak';const a=document.createElement('span');a.textContent=p.name+' · '+p.reference_elevation+'m';const b=document.createElement('strong');b.textContent=validRadiation?'≈ '+temp(estimate(reference.temperature_c,reference.elevation_m,p.reference_elevation,rate)+sunDelta):'—';div.append(a,b);box.append(div)}
 }
 async function fetchWeather(){
 $('ref-status').textContent='获取中…';
-try{const r=await fetch('/api/weather',{signal:AbortSignal.timeout(18000)});if(!r.ok)throw Error('气象接口不可用');const d=await r.json();if(!Number.isFinite(d.temperature_c)||!Number.isFinite(d.elevation_m)||!Number.isFinite(Date.parse(d.observed_at)))throw Error('数据字段不完整');weather=d;$('ref-temp').textContent=temp(d.temperature_c);$('ref-alt').textContent='网格参考海拔 '+Math.round(d.elevation_m)+' m';$('ref-time').textContent='数据时间：'+new Date(d.observed_at).toLocaleString('zh-CN');$('ref-sun').textContent=Number.isFinite(d.shortwave_radiation_wm2)?'网格短波辐射 '+Math.round(d.shortwave_radiation_wm2)+' W/m²'+(Number.isFinite(d.cloud_cover_percent)?' · 云量 '+Math.round(d.cloud_cover_percent)+'%':''):'暂无日照辐射数据；仅显示海拔基线';$('ref-status').textContent='已取得气象网格数据。';
-}catch(e){weather=null;$('ref-temp').textContent='—';$('ref-time').textContent='暂无有效气象数据';$('ref-sun').textContent='暂无日照辐射数据';$('ref-status').textContent='获取失败：'+e.message}update();
+try{const r=await fetch('/api/weather',{signal:AbortSignal.timeout(18000)});if(!r.ok)throw Error('气象接口不可用');const d=await r.json();if(!Number.isFinite(d.temperature_c)||!Number.isFinite(d.elevation_m)||!Number.isFinite(Date.parse(d.observed_at)))throw Error('数据字段不完整');weather=d;$('ref-temp').textContent=temp(d.temperature_c);$('ref-alt').textContent='网格参考海拔 '+Math.round(d.elevation_m)+' m';$('ref-time').textContent='数据时间：'+new Date(d.observed_at).toLocaleString('zh-CN');$('ref-sun').textContent=Number.isFinite(d.shortwave_radiation_wm2)?'网格短波辐射 '+Math.round(d.shortwave_radiation_wm2)+' W/m²'+(Number.isFinite(d.cloud_cover_percent)?' · 云量 '+Math.round(d.cloud_cover_percent)+'%':''):'暂无实时辐射数据；下方仍可调整情景辐射';$('ref-status').textContent='已取得气象网格数据。';
+}catch(e){weather=null;$('ref-temp').textContent=temp(demoWeather.temperature_c);$('ref-alt').textContent='演示参考海拔 '+demoWeather.elevation_m+' m';$('ref-time').textContent='演示基准，非实时气温';$('ref-sun').textContent='下方使用可调的情景辐射值';$('ref-status').textContent='实时数据不可用，继续使用明确标注的演示基准。'}update();
 }
 function regression(data){
 const n=data.length,mx=data.reduce((a,x)=>a+x.h,0)/n,my=data.reduce((a,x)=>a+x.t,0)/n;
@@ -62,7 +62,7 @@ $('results').hidden=false;$('validation-status').textContent='已计算 '+data.l
 };
 $('clear').onclick=()=>{$('csv').value='';validation=null;$('results').hidden=true;$('validation-status').textContent='已清空测点。'};
 $('export').onclick=()=>{if(!validation)return;const url=URL.createObjectURL(new Blob([JSON.stringify(validation,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='huashan-temperature-validation.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
-$('rate').oninput=update;$('target').oninput=update;$('exposure').oninput=update;$('sun-beta').oninput=update;$('refresh').onclick=fetchWeather;
+$('rate').oninput=update;$('target').oninput=update;$('exposure').oninput=update;$('sun-beta').oninput=update;$('scenario-radiation').oninput=update;$('refresh').onclick=fetchWeather;
 fetch('../peaks.json').then(r=>{if(!r.ok)throw Error();return r.json()}).then(d=>{peaks=d;update()}).catch(()=>{$('peaks').textContent='五峰资料加载失败';});
 fetchWeather();
 </script></html>
