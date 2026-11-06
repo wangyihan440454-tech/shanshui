@@ -14,7 +14,7 @@
     }
 
     #canvas-container { position: fixed; inset: 0; }
-
+    
     /* 3D 文字标签层 */
     #labels-container {
         position: fixed; inset: 0; pointer-events: none; z-index: 2;
@@ -23,7 +23,7 @@
     .province-label {
         font-size: 13px; color: #333; font-weight: bold;
         text-shadow: 1px 1px 0px rgba(255,255,255,0.9), -1px -1px 0px rgba(255,255,255,0.9), 1px -1px 0px rgba(255,255,255,0.9), -1px 1px 0px rgba(255,255,255,0.9);
-        white-space: nowrap;
+        white-space: nowrap; 
         transition: opacity 0.3s, transform 0.3s;
         transform: translate(-50%, -50%);
         pointer-events: none;
@@ -123,13 +123,13 @@ const PROVINCE_INFO = {
 const PROVINCE_PAGES = {
     "陕西省": "./huashan/index.html?view=hero",
 
-    "北京市": "./scenes/beijing.html",
+    "北京市": "./scenes/beijing.html", 
     "云南省": "./scenes/yunnan.html",
-    "四川省": "./scenes/sichuan.html",
+    "四川省": "./scenes/sichuan.html", 
     "西藏自治区": "./scenes/xizang.html",
-    "新疆维吾尔自治区": "./scenes/xinjiang.html",
+    "新疆维吾尔自治区": "./scenes/xinjiang.html", 
     "台湾省": "./scenes/taiwan.html",
-    "贵州省": "./guizhou.html"
+    "贵州省": "./guizhou.html" 
 };
 
 const PROVINCE_COLORS = {
@@ -149,7 +149,7 @@ function getHoverColor(baseColorHex) {
     const color = new THREE.Color(baseColorHex);
     const hsl = { h: 0, s: 0, l: 0 };
     color.getHSL(hsl);
-    color.setHSL(hsl.h, Math.min(hsl.s + 0.4, 1.0), Math.max(hsl.l - 0.2, 0.3));
+    color.setHSL(hsl.h, Math.min(hsl.s + 0.4, 1.0), Math.max(hsl.l - 0.2, 0.3)); 
     return color;
 }
 
@@ -157,7 +157,7 @@ function getActiveColor(baseColorHex) {
     const color = new THREE.Color(baseColorHex);
     const hsl = { h: 0, s: 0, l: 0 };
     color.getHSL(hsl);
-    color.setHSL(hsl.h, Math.min(hsl.s + 0.5, 1.0), Math.max(hsl.l - 0.3, 0.2));
+    color.setHSL(hsl.h, Math.min(hsl.s + 0.5, 1.0), Math.max(hsl.l - 0.3, 0.2)); 
     return color;
 }
 
@@ -276,7 +276,7 @@ async function buildMap() {
                 if (pts.length < 3) return;
                 for (let i = 0; i < pts.length; i++) {
                     const a = pts[i], b = pts[(i + 1) % pts.length];
-                    outlineVerts.push(a.x, a.y, 5.1, b.x, b.y, 5.1);
+                    outlineVerts.push(a.x, a.y, 5.1, b.x, b.y, 5.1); 
                 }
             });
         });
@@ -297,7 +297,7 @@ async function buildMap() {
             mergedGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
             mergedGeometry.computeVertexNormals();
         }
-
+        
         if(!mergedGeometry) return;
 
         mergedGeometry.computeBoundingBox();
@@ -314,70 +314,6 @@ async function buildMap() {
     const globalBox = new THREE.Box3().setFromPoints(collected.map(p => p.offset));
     const globalCenter = globalBox.getCenter(new THREE.Vector3());
 
-    const provinces = [
-        ['新疆', 350, 369, 72, 32], ['西藏', 348, 581, 65, 24], ['青海', 540, 519, 44, 22],
-        ['甘肃', 680, 507, 23, 16], ['宁夏', 732, 506, 17, 15], ['内蒙古', 780, 408, 56, 20],
-        ['黑龙江', 1094, 244, 47, 23], ['吉林', 1101, 347, 30, 17], ['辽宁', 1035, 380, 30, 16],
-        ['北京', 950, 412, 15, 12], ['天津', 977, 449, 14, 11], ['河北', 926, 468, 22, 16],
-        ['山西', 853, 487, 25, 16], ['陕西', 787, 523, 26, 40], ['山东', 978, 511, 25, 18],
-        ['河南', 868, 605, 27, 17], ['江苏', 1009, 584, 23, 16], ['上海', 1091, 640, 14, 10],
-        ['安徽', 959, 642, 24, 18], ['浙江', 1049, 673, 24, 17], ['湖北', 853, 645, 24, 15],
-        ['四川', 630, 674, 43, 25], ['重庆', 733, 681, 19, 16], ['江西', 938, 711, 23, 18],
-        ['湖南', 845, 745, 24, 16], ['福建', 1015, 751, 21, 17], ['贵州', 724, 761, 26, 16],
-        ['云南', 613, 795, 33, 22], ['广西', 750, 821, 34, 18], ['广东', 889, 829, 29, 17],
-        ['香港', 979, 864, 14, 9], ['澳门', 923, 888, 14, 9], ['海南', 795, 950, 24, 15],
-        ['台湾', 1082, 827, 15, 33],
-    ];
-    const sceneryRegions = new Map(provinces.map(([name, x, y, rx, ry]) => [name, { x, y, rx, ry }]));
-    const sceneryTexture = new THREE.TextureLoader().load('./china-scenery.png');
-    sceneryTexture.colorSpace = THREE.SRGBColorSpace;
-    const sceneryMaterial = new THREE.MeshBasicMaterial({ map: sceneryTexture });
-
-    function provinceMaterials(province, sideMaterial) {
-        const name = province.name.replace(/(?:维吾尔自治区|壮族自治区|回族自治区|特别行政区|自治区|省|市)$/, '');
-        const region = sceneryRegions.get(name);
-        if (!region) return sideMaterial;
-
-        const geometry = province.geometry;
-        const positions = geometry.getAttribute('position');
-        const indices = geometry.getIndex();
-        const bounds = geometry.boundingBox;
-        const width = bounds.max.x - bounds.min.x;
-        const height = bounds.max.y - bounds.min.y;
-        if (width <= 0 || height <= 0) return sideMaterial;
-
-        // Cover the province with a single scale in both directions.
-        // Sample above the printed province name to keep the live label legible.
-        const cropHeight = Math.max(6, region.ry - 9);
-        const sourceScale = Math.min(2 * region.rx / width, cropHeight / height);
-        const cropCenterY = region.y - 9 - cropHeight / 2;
-        const centerX = (bounds.min.x + bounds.max.x) / 2;
-        const centerY = (bounds.min.y + bounds.max.y) / 2;
-
-        const uv = new Float32Array(positions.count * 2);
-        for (let i = 0; i < positions.count; i++) {
-            const x = (positions.getX(i) - centerX) * sourceScale;
-            const y = (positions.getY(i) - centerY) * sourceScale;
-            uv[2 * i] = (region.x + x) / 1482;
-            uv[2 * i + 1] = 1 - (cropCenterY - y) / 1061;
-        }
-        geometry.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
-        geometry.clearGroups();
-
-        const count = indices ? indices.count : positions.count;
-        const isTop = i => positions.getZ(indices ? indices.getX(i) : i) > 0;
-        let start = 0;
-        let current = -1;
-        for (let i = 0; i < count; i += 3) {
-            const next = isTop(i) && isTop(i + 1) && isTop(i + 2) ? 1 : 0;
-            if (next === current) continue;
-            if (i > start) geometry.addGroup(start, i - start, current);
-            start = i;
-            current = next;
-        }
-        geometry.addGroup(start, count - start, current);
-        return [sideMaterial, sceneryMaterial];
-    }
     collected.forEach(p => {
         const baseHex = PROVINCE_COLORS[p.name] || DEFAULT_COLOR;
         const baseColor = new THREE.Color(baseHex);
@@ -389,7 +325,7 @@ async function buildMap() {
             emissive: 0x000000, emissiveIntensity: 0
         });
 
-        const mesh = new THREE.Mesh(p.geometry, provinceMaterials(p, material));
+        const mesh = new THREE.Mesh(p.geometry, material);
         mesh.position.set(p.offset.x - globalCenter.x, p.offset.y - globalCenter.y, 0);
 
         mesh.add(new THREE.LineSegments(p.outlineGeo, outlineMaterial));
@@ -409,10 +345,10 @@ async function buildMap() {
         div.className = 'province-label';
         div.textContent = p.name.replace('维吾尔自治区', '').replace('壮族自治区', '').replace('回族自治区', '')
                                 .replace('特别行政区', '').replace('自治区', '').replace('省', '').replace('市', '');
-
+   
         const label = new CSS2DObject(div);
-        label.position.set(0, 0, 5.2);
-
+        label.position.set(0, 0, 5.2); 
+        
         if (p.name === '香港特别行政区') label.position.set(0, -12, 5.2);
         if (p.name === '澳门特别行政区') label.position.set(0, -18, 5.2);
         if (p.name === '上海市') label.position.set(-5, 0, 5.2);
@@ -489,7 +425,7 @@ window.addEventListener('pointermove', (e) => {
 
 function handleClick(e) {
     if (!mapReady || isNavigating) return;
-    updatePointer(e);
+    updatePointer(e); 
     raycaster.setFromCamera(pointer, camera);
 
     if (selected && raycaster.intersectObject(selected, true).length > 0) {
@@ -517,7 +453,7 @@ function selectProvince(mesh) {
     selected = mesh;
     setHovered(null);
     selected.userData.setState('active');
-
+    
     if (selected.userData.label) selected.userData.label.element.classList.add('hidden');
 
     scene.attach(selected);
@@ -545,9 +481,9 @@ function resetView() {
         selected.position.copy(selected.userData.originPos);
         selected.rotation.copy(selected.userData.originRot);
         selected.userData.setState('base');
-
+        
         if (selected.userData.label) selected.userData.label.element.classList.remove('hidden');
-
+        
         selected = null;
     }
     setHovered(null);
@@ -597,10 +533,9 @@ function animate() {
     mapGroup.rotation.x += (targetGroupRotX - mapGroup.rotation.x) * 0.06;
 
     provinceMeshes.forEach(m => {
-        const sideMaterial = Array.isArray(m.material) ? m.material[0] : m.material;
-        sideMaterial.color.lerp(m.userData.targetColor, 0.15);
+        m.material.color.lerp(m.userData.targetColor, 0.15);
         if (m.userData.targetEmissive) {
-            sideMaterial.emissive.lerp(new THREE.Color(m.userData.targetEmissive), 0.15);
+            m.material.emissive.lerp(new THREE.Color(m.userData.targetEmissive), 0.15);
         }
     });
 
@@ -608,7 +543,7 @@ function animate() {
         selected.position.lerp(floatTargetPos, 0.08);
         selected.rotation.x += (0 - selected.rotation.x) * 0.08;
         selected.rotation.y += (0 - selected.rotation.y) * 0.08;
-        selected.rotation.z += 0.003;
+        selected.rotation.z += 0.003; 
     }
 
     const idleX = Math.sin(t * 0.22) * 5;
