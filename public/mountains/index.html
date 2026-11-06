@@ -346,12 +346,20 @@ async function buildMap() {
         const height = bounds.max.y - bounds.min.y;
         if (width <= 0 || height <= 0) return sideMaterial;
 
+        // Cover the province with a single scale in both directions.
+        // Sample above the printed province name to keep the live label legible.
+        const cropHeight = Math.max(6, region.ry - 9);
+        const sourceScale = Math.min(2 * region.rx / width, cropHeight / height);
+        const cropCenterY = region.y - 9 - cropHeight / 2;
+        const centerX = (bounds.min.x + bounds.max.x) / 2;
+        const centerY = (bounds.min.y + bounds.max.y) / 2;
+
         const uv = new Float32Array(positions.count * 2);
         for (let i = 0; i < positions.count; i++) {
-            const x = (positions.getX(i) - bounds.min.x) / width;
-            const y = (positions.getY(i) - bounds.min.y) / height;
-            uv[2 * i] = (region.x + (x * 2 - 1) * region.rx) / 1482;
-            uv[2 * i + 1] = 1 - (region.y + (1 - y * 2) * region.ry) / 1061;
+            const x = (positions.getX(i) - centerX) * sourceScale;
+            const y = (positions.getY(i) - centerY) * sourceScale;
+            uv[2 * i] = (region.x + x) / 1482;
+            uv[2 * i + 1] = 1 - (cropCenterY - y) / 1061;
         }
         geometry.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
         geometry.clearGroups();
