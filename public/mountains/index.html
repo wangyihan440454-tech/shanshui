@@ -83,6 +83,12 @@
         #info-card.show { transform: translate(50%, 0) scale(1); }
         #card-image-container { height: 150px; }
     }
+    #scenery-open { position: fixed; top: 28px; left: 28px; z-index: 200; padding: 12px 20px; border: 1px solid #a9b7b4; background: #f0f3f5dd; color: #30382f; font: inherit; cursor: pointer; }
+    #scenery-view { box-sizing: border-box; width: min(96vw, 1500px); max-height: 96vh; border: 1px solid #b4a792; background: #f7efe3; padding: 12px; color: #30382f; }
+    #scenery-view::backdrop { background: #191b1bd9; }
+    #scenery-view header { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 8px; }
+    #scenery-view img { display: block; width: 100%; max-height: 82vh; object-fit: contain; }
+    #scenery-view button { padding: 6px 12px; font: inherit; cursor: pointer; }
 </style>
 
 </head>
@@ -92,6 +98,11 @@
 <div id="hint">本图暂时只能打开华山三维，请点击陕西板块进行查看。</div>
 <div id="vignette"></div>
 
+<button id="scenery-open" type="button" onclick="document.getElementById('scenery-view').showModal()">风光图</button>
+<dialog id="scenery-view" aria-labelledby="scenery-title">
+    <header><span id="scenery-title">中国地理风光图 · 插画</span><form method="dialog"><button autofocus>返回地图</button></form></header>
+    <img src="./china-scenery.png" loading="lazy" width="1482" height="1061" alt="米白背景的中国地理风光插画，新疆为戈壁雪山，右下方为南海诸岛附图">
+</dialog>
 <div id="canvas-container"></div>
 <div id="labels-container"></div>
 
