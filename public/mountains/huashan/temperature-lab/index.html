@@ -11,7 +11,7 @@
 <section class="panel wide"><h2>03 · 华山五峰温度估算</h2><p class="hint">五峰海拔来自仓库已有 peaks.json；以下数字按实验区所选的同一受光情景计算，可随滑块变化；各峰真实坡向与遮阴不同，不能把这些数值当作实测。</p><div id="peaks" class="peaks">载入资料中…</div></section>
 <section class="panel"><h2>04 · 导入真实测温记录</h2><p class="hint">每行3列：测点名, 海拔米, 2米气温℃。同批测点应尽量同时间测量，并记录设备、地理坐标与天气。至少4个测点、3个不同海拔。</p><textarea id="csv" placeholder="name,elevation_m,temp_c&#10;A,1200,17.8&#10;B,1500,16.2"></textarea><div class="row"><button id="fit">验证实测数据</button><button id="clear">清空</button></div><p id="validation-status" role="status" class="hint">尚无实测数据，不能声称模型精度。</p></section>
 <section class="panel wide" id="results" hidden><h2>05 · 结果与交叉验证</h2><div class="row"><div class="metric">实测拟合递减率 <strong id="fitted">—</strong></div><div class="metric">留一验证 MAE <strong id="mae">—</strong></div><div class="metric">留一验证 RMSE <strong id="rmse">—</strong></div></div><p class="hint">每轮用其它测点拟合线性回归，再预测被留出的测点。指标只描述所导入样本，不等于山体所有位置精度。</p><div class="scroll"><table><thead><tr><th>测点</th><th>海拔 (m)</th><th>实测 (°C)</th><th>预测 (°C)</th><th>误差 (°C)</th></tr></thead><tbody id="rows"></tbody></table></div><div class="row"><button id="export">导出验证结果 JSON</button></div></section>
-<section class="panel wide"><h2>研究说明</h2><div class="note">这是科研原型，不是已经完成的山地测温科研成果。海拔与日照情景估算依赖简化模型，日照响应系数尚未校准，不能替代现场实测。要形成挑战杯创新点，应收集真实山地测温记录，再与固定温度梯度、实测拟合及考虑坡向/日照的多变量方法进行对照测试。</div></section></div><footer>数据：Open-Meteo API / 项目内五峰参考海拔。该原型不用于登山安全决策。</footer></main>
+</div><footer>数据：Open-Meteo API / 项目内五峰参考海拔。该原型不用于登山安全决策。</footer></main>
 <script>
 const $=id=>document.getElementById(id);
 let weather=null,peaks=[],validation=null;
