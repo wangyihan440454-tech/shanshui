@@ -589,9 +589,10 @@ function animate() {
     mapGroup.rotation.x += (targetGroupRotX - mapGroup.rotation.x) * 0.06;
 
     provinceMeshes.forEach(m => {
-        m.material.color.lerp(m.userData.targetColor, 0.15);
+        const sideMaterial = Array.isArray(m.material) ? m.material[0] : m.material;
+        sideMaterial.color.lerp(m.userData.targetColor, 0.15);
         if (m.userData.targetEmissive) {
-            m.material.emissive.lerp(new THREE.Color(m.userData.targetEmissive), 0.15);
+            sideMaterial.emissive.lerp(new THREE.Color(m.userData.targetEmissive), 0.15);
         }
     });
 
